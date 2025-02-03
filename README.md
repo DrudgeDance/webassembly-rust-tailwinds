@@ -10,6 +10,7 @@ my_first_rust_app/
 │   ├── src/
 │   │   ├── components/   # Reusable UI components
 │   │   ├── layouts/      # Layout components
+│   │   ├── theme/        # Theme system and providers
 │   │   └── styles/       # Tailwind CSS styles
 │   ├── package.json      # Node dependencies for Tailwind
 │   └── tailwind.config.js
@@ -28,6 +29,11 @@ my_first_rust_app/
 - **Modern Stack**: Rust 🦀 for type-safe, high-performance code
 - **Frontend Framework**: Leptos for reactive web applications with Wasm
 - **Styling**: Tailwind CSS for utility-first styling
+- **Theme System**:
+  - Dynamic theme switching (Light/Dark modes)
+  - Seasonal themes (Spring/Summer variations)
+  - CSS variable-based theming
+  - Reactive theme updates
 - **Architecture**:
   - Modular UI components library (Wasm)
   - Feature-based frontend organization
@@ -85,17 +91,48 @@ my_first_rust_app/
    - Components are compiled to Wasm for optimal performance
    - Style using Tailwind CSS classes
    - Components are automatically available in the frontend
+   - Use theme variables for consistent styling
 
-2. **Frontend Features**:
+2. **Theme Development**:
+   - Theme definitions in `ui-components/src/theme/themes/`
+   - Add new themes by creating theme files
+   - Use CSS variables for dynamic theme updates
+   - Test themes in both light and dark modes
+
+3. **Frontend Features**:
    - Add new features in `frontend/src/features/`
    - Use components from the UI library
    - All code is compiled to Wasm for high performance
    - Add API calls in `frontend/src/services/`
 
-3. **Backend Development**:
+4. **Backend Development**:
    - Implement API endpoints in `backend/src/`
    - Use shared types for full-stack type safety
    - Native Rust performance on the server
+
+## Theme System
+
+The application includes a robust theme system that supports:
+
+- **Dynamic Themes**: Switch between light and dark modes
+- **Seasonal Variations**: Spring and Summer theme variations
+- **CSS Variables**: Theme colors are managed through CSS variables
+- **Reactive Updates**: Themes update instantly without page reload
+- **Consistent Styling**: All components use theme variables for colors
+
+Theme variables available:
+```css
+--background      /* Background color */
+--surface        /* Surface/card color */
+--text           /* Primary text color */
+--text-muted     /* Secondary text color */
+--primary        /* Primary brand color */
+--secondary      /* Secondary brand color */
+--accent         /* Accent color */
+--seasonal-primary    /* Season-specific primary */
+--seasonal-secondary  /* Season-specific secondary */
+--seasonal-accent     /* Season-specific accent */
+```
 
 ## Performance Benefits
 
@@ -104,6 +141,7 @@ my_first_rust_app/
 - **Type Safety**: Catch errors at compile time, not runtime
 - **Memory Safety**: Rust's ownership system prevents memory-related bugs
 - **Zero-Cost Abstractions**: High-level code without runtime overhead
+- **Efficient Theme Updates**: CSS variables for performant theme switching
 
 ## Building for Production
 
@@ -120,3 +158,12 @@ trunk build --release
 cd backend
 cargo build --release
 ```
+
+## Browser Support
+
+The application works best in modern browsers that support:
+- WebAssembly
+- CSS Variables
+- Modern JavaScript features
+
+Note: Some browser console warnings about subresource integrity for preloaded resources are expected in Chrome and can be safely ignored.
