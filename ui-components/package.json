@@ -2,8 +2,9 @@
   "name": "ui-components",
   "version": "1.0.0",
   "scripts": {
-    "build:css": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles.css",
-    "watch:css": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles.css --watch"
+    "build:css": "NODE_ENV=production tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles.css --minify",
+    "watch:css": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles.css --watch",
+    "build": "yarn build:css"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

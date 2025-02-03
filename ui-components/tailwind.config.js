@@ -4,15 +4,45 @@ module.exports = {
     "./src/**/*.rs",
     "../frontend/src/**/*.rs"
   ],
+  purge: {
+    enabled: true,
+    content: [
+      "./src/**/*.rs",
+      "../frontend/src/**/*.rs"
+    ],
+    options: {
+      safelist: [
+        /^bg-/,  // Preserve all background classes
+        /^text-/  // Preserve all text classes
+      ]
+    }
+  },
   theme: {
     extend: {
       colors: {
-        primary: '#4F46E5',
-        secondary: '#10B981',
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        background: 'var(--background)',
+        surface: 'var(--surface)',
+        text: 'var(--text)',
+        'text-muted': 'var(--text-muted)',
+        accent: 'var(--accent)',
+        'seasonal-primary': 'var(--seasonal-primary)',
+        'seasonal-secondary': 'var(--seasonal-secondary)',
+        'seasonal-accent': 'var(--seasonal-accent)',
       },
       spacing: {
         '128': '32rem',
       },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' }
+        }
+      },
+      animation: {
+        'fade-in': 'fade-in 0.1s ease-out forwards'
+      }
     },
   },
   plugins: [],
