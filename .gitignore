@@ -1,0 +1,47 @@
+# Rust build artifacts
+/target
+**/target/
+**/*.rs.bk
+
+# Frontend build artifacts
+/frontend/dist/
+/frontend/pkg/
+*.wasm
+*.js.map
+
+# Development
+.env
+.env.*
+.env
+.env.local
+!.env.example
+
+# Debug files
+**/*.rs.bk
+*.pdb
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Debug files
+*.pdb
+*.log
+
+# Dependencies
+node_modules/
+
+# Trunk's build artifacts
+dist/
+pkg/
+
+# Local configuration
+.cargo/config.toml
+.rustc_info.json
+
+# Optional: uncomment if you want to ignore Cargo.lock
+# Cargo.lock 
