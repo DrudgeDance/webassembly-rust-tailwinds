@@ -1,22 +1,18 @@
-use super::{Theme, Mode};
-use web_sys::window;
+use crate::theme::{Mode, Season, Theme};
 
 pub fn get_system_mode() -> Mode {
-    window()
-        .and_then(|window| window.match_media("(prefers-color-scheme: dark)").ok())
-        .flatten()
-        .map(|query| query.matches())
-        .map(|is_dark| if is_dark { Mode::Dark } else { Mode::Light })
-        .unwrap_or(Mode::Light)
+    // TODO: Implement actual system theme detection
+    Mode::Light
 }
 
-pub fn get_theme_variant(base_theme: &Theme, mode: Mode) -> Theme {
-    if base_theme.mode == mode {
-        base_theme.clone()
-    } else {
-        match mode {
-            Mode::Light => super::themes::get_spring_light_theme(),
-            Mode::Dark => super::themes::get_spring_dark_theme(),
-        }
+pub fn get_theme_variant(theme: &Theme, new_mode: Mode) -> Theme {
+    let season = theme.season;
+    match (new_mode, season) {
+        (Mode::Light, Some(Season::Spring)) => Theme::spring_light(),
+        (Mode::Dark, Some(Season::Spring)) => Theme::spring_dark(),
+        (Mode::Light, Some(Season::Summer)) => Theme::summer_light(),
+        (Mode::Dark, Some(Season::Summer)) => Theme::summer_dark(),
+        (Mode::Light, None) => Theme::default_light(),
+        (Mode::Dark, None) => Theme::default_dark(),
     }
 } 
