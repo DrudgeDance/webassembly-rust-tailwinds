@@ -1,0 +1,15 @@
+[package]
+name = "ui-components"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+leptos = { version = "0.5", features = ["csr"] }
+leptos_meta = { version = "0.5", features = ["csr"] }
+web-sys = { version = "0.3", features = ["Headers", "Request", "RequestInit", "RequestMode", "Response", "Window"] }
+
+[features]
+default = ["csr"]
+csr = ["leptos/csr", "leptos_meta/csr"]
+hydrate = ["leptos/hydrate", "leptos_meta/hydrate"]
+ssr = ["leptos/ssr", "leptos_meta/ssr"]

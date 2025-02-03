@@ -1,11 +1,8 @@
+use leptos::*;
 use frontend::App;
 
-fn main() {
-    #[cfg(debug_assertions)]
+pub fn main() {
+    _ = console_log::init_with_level(log::Level::Debug);
     console_error_panic_hook::set_once();
-    
-    #[cfg(debug_assertions)]
-    wasm_logger::init(wasm_logger::Config::default());
-    
-    yew::Renderer::<App>::new().render();
+    mount_to_body(App);
 } 
