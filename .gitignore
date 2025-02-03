@@ -2,15 +2,80 @@
 /target
 **/target/
 **/*.rs.bk
+Cargo.lock
+
+# WebAssembly
+*.wasm
+/dist/
+/pkg/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.pnp.*
+
+# Trunk
+.trunk/
+
+# IDE - VSCode
+.vscode/
+*.code-workspace
+
+# IDE - JetBrains (RustRover, IntelliJ, etc)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# IDE - Vim
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Tailwind CSS
+ui-components/dist/
+frontend/dist/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug logs
+debug/
+*.log
+
+# Build output
+build/
+out/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+.temp/
 
 # Frontend build artifacts
 /frontend/dist/
 /frontend/pkg/
-*.wasm
 *.js.map
 
 # Development
-.env
 .env.*
 .env
 .env.local
@@ -26,8 +91,6 @@
 *.swp
 *.swo
 .DS_Store
-Thumbs.db
-
 # Debug files
 *.pdb
 *.log
@@ -38,6 +101,14 @@ node_modules/
 # Trunk's build artifacts
 dist/
 pkg/
+
+Thumbs.db
+
+# Debug files
+*.pdb
+*.log
+
+
 
 # Local configuration
 .cargo/config.toml
