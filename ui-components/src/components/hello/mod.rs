@@ -1,4 +1,6 @@
 mod component;
+pub mod themes;
+
 pub use component::Hello;
 
 use crate::theme::ComponentTheme;

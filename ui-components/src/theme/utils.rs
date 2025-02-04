@@ -1,10 +1,15 @@
 use crate::theme::{Mode, Theme, BaseTheme};
 
+// Reserved for future use with system theme detection
+// and theme variant management
+
+#[allow(dead_code)]
 pub fn get_system_mode() -> Mode {
     // TODO: Implement actual system theme detection
     Mode::Light
 }
 
+#[allow(dead_code)]
 pub fn get_theme_variant(theme: &BaseTheme, new_mode: Mode) -> BaseTheme {
     let theme = theme.theme;
     match (new_mode, theme) {

@@ -1,4 +1,8 @@
 mod types;
+mod router;
+mod provider;
+mod utils;
+
 pub use types::*;
 
 pub fn get_default_theme(mode: Mode) -> BaseTheme {
@@ -59,14 +63,6 @@ pub fn get_summer_theme(mode: Mode) -> BaseTheme {
     theme.colors.accent = "#FBBF24".to_string();     // Amber lighter
     theme
 }
-
-mod router;
-mod provider;
-mod utils;
-
-pub use router::ThemeRouter;
-pub use provider::ThemeProvider;
-pub use utils::{get_system_mode, get_theme_variant};
 
 lazy_static::lazy_static! {
     pub static ref SPRING_LIGHT_THEME: BaseTheme = get_spring_theme(Mode::Light);

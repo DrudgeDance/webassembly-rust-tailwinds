@@ -14,9 +14,18 @@ pub struct ThemeSelectorColors {
 }
 
 impl ComponentColors for ThemeSelectorColors {
-    fn apply_base_theme(&mut self, _base_theme: &BaseTheme) {
-        // No-op: ThemeSelectorColors doesn't need to adjust based on base theme
-        // Colors are fully defined by the theme implementations
+    fn from_theme(base_theme: &BaseTheme) -> Self {
+        Self {
+            button_bg: base_theme.colors.surface.clone(),
+            button_text: base_theme.colors.text.clone(),
+            button_hover_bg: base_theme.colors.primary.clone(),
+            button_border: base_theme.colors.secondary.clone(),
+            select_bg: base_theme.colors.surface.clone(),
+            select_text: base_theme.colors.text.clone(),
+            select_border: base_theme.colors.secondary.clone(),
+            select_hover_bg: base_theme.colors.primary.clone(),
+            icon_color: base_theme.colors.text_muted.clone(),
+        }
     }
 }
 

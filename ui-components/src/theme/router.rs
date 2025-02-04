@@ -1,7 +1,9 @@
 use super::types::{Mode, Theme};
 
+#[allow(dead_code)]
 pub struct ThemeRouter;
 
+#[allow(dead_code)]
 impl ThemeRouter {
     pub fn next_theme(current_theme: Option<Theme>) -> Option<Theme> {
         match current_theme {
@@ -25,4 +27,7 @@ impl ThemeRouter {
             Mode::Dark => Mode::Light,
         }
     }
-} 
+}
+
+// Reserved for future use with theme routing and navigation
+// This will handle theme transitions and history 

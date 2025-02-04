@@ -1,18 +1,18 @@
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Theme {
     Spring,
     Summer,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Mode {
     Light,
     Dark,
 }
 
 // Base trait for component-specific colors
-pub trait ComponentColors: std::fmt::Debug + Clone {
-    fn apply_base_theme(&mut self, base_theme: &BaseTheme);
+pub trait ComponentColors {
+    fn from_theme(theme: &BaseTheme) -> Self;
 }
 
 // Component-specific theme
@@ -25,7 +25,7 @@ pub struct ComponentTheme<T: ComponentColors> {
 }
 
 // Base theme for the entire application
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone)]
 pub struct BaseTheme {
     pub name: String,
     pub mode: Mode,
@@ -60,7 +60,7 @@ impl BaseTheme {
 }
 
 // Colors for the base theme
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone)]
 pub struct ThemeColors {
     pub background: String,
     pub surface: String,
