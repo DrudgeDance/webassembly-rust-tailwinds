@@ -1,18 +1,21 @@
 use crate::theme::{ComponentTheme, Mode, Theme};
-use crate::components::theme_selector::types::ThemeSelectorColors;
+use super::types::ThemeSelectorColors;
 
 pub fn get_theme() -> ComponentTheme<ThemeSelectorColors> {
     ComponentTheme {
-        name: "Theme Selector Light Summer".to_string(),
+        name: "Light Summer".to_string(),
         mode: Mode::Light,
         theme: Some(Theme::Summer),
         colors: ThemeSelectorColors {
-            button_bg: "#FFFAF0".to_string(),    // Floral white
-            button_text: "#111827".to_string(),   // Very dark gray
-            button_border: "#F59E0B".to_string(), // Amber
-            active_bg: "#D97706".to_string(),     // Amber darker
-            active_text: "#FFFFFF".to_string(),   // White
-            hover_bg: "#FEF3C7".to_string(),      // Light amber
-        }
+            button_bg: "#fff5f5".to_string(),
+            button_text: "#c53030".to_string(),
+            button_hover_bg: "#fed7d7".to_string(),
+            button_border: "#fc8181".to_string(),
+            select_bg: "#fff5f5".to_string(),
+            select_text: "#c53030".to_string(),
+            select_border: "#fc8181".to_string(),
+            select_hover_bg: "#fed7d7".to_string(),
+            icon_color: "#f56565".to_string(),
+        },
     }
 } 

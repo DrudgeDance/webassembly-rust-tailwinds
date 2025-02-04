@@ -1,18 +1,21 @@
 use crate::theme::{ComponentTheme, Mode};
-use crate::components::theme_selector::types::ThemeSelectorColors;
+use super::types::ThemeSelectorColors;
 
 pub fn get_theme() -> ComponentTheme<ThemeSelectorColors> {
     ComponentTheme {
-        name: "Theme Selector Dark Default".to_string(),
+        name: "Dark Default".to_string(),
         mode: Mode::Dark,
         theme: None,
         colors: ThemeSelectorColors {
-            button_bg: "#374151".to_string(),    // Dark gray
-            button_text: "#F9FAFB".to_string(),   // Very light gray
-            button_border: "#4B5563".to_string(), // Medium gray
-            active_bg: "#4F46E5".to_string(),     // Indigo
-            active_text: "#FFFFFF".to_string(),   // White
-            hover_bg: "#4B5563".to_string(),      // Medium gray hover
-        }
+            button_bg: "#1a1a1a".to_string(),
+            button_text: "#ffffff".to_string(),
+            button_hover_bg: "#2a2a2a".to_string(),
+            button_border: "#4a5568".to_string(),
+            select_bg: "#1a1a1a".to_string(),
+            select_text: "#ffffff".to_string(),
+            select_border: "#4a5568".to_string(),
+            select_hover_bg: "#2a2a2a".to_string(),
+            icon_color: "#999999".to_string(),
+        },
     }
 } 
