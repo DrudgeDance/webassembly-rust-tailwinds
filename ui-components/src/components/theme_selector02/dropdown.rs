@@ -33,16 +33,12 @@ pub fn ThemeSelectorDropdown(
 
     view! {
         <div
-            class="fixed mt-2 w-48 p-2 rounded-lg shadow-lg space-y-2 transition-all duration-200"
+            class="absolute w-48 p-2 rounded-lg shadow-lg space-y-2 transition-all duration-200 z-50"
             class=move || {
                 let (bg, _, _) = super::get_theme_colors(None, theme);
                 format!("{} {}", bg, if is_open.get() { "block" } else { "hidden" })
             }
-            style=move || format!(
-                "min-width: 200px; top: {}; right: {};",
-                "var(--theme-selector-dropdown-top, 100%)",
-                "var(--theme-selector-dropdown-right, 0)"
-            )
+            style="min-width: 200px; right: 0; top: calc(100% + 2.5rem);"
         >
             {theme_button(None, "Default", "🎨")}
             {theme_button(Some(Theme::Spring), "Spring", "🌱")}

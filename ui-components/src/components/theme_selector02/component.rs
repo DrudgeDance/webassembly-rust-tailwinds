@@ -49,11 +49,9 @@ pub fn ThemeSelector02(
     };
 
     view! {
-        <div class="relative inline-block" 
-            style="--theme-selector-dropdown-top: calc(100% + 0.5rem); --theme-selector-dropdown-right: 0;"
-        >
+        <div class="relative inline-block z-40">
             <button
-                class="inline-flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200"
+                class="inline-flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 relative"
                 class=move || {
                     let (bg, text, hover) = get_theme_colors(theme.get().theme, theme);
                     format!("{} {} {}", bg, text, hover)
