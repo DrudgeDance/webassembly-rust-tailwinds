@@ -2,6 +2,7 @@ pub mod components;
 pub mod layouts;
 pub mod styles;
 pub mod theme;
+pub mod defaults;
 
 // Re-export commonly used components
 pub use components::Hello;
