@@ -2,14 +2,15 @@ pub mod features;
 pub mod services;
 
 use leptos::*;
-use crate::features::HelloFeature;
 use ui_components::{
-    theme::{Theme, ThemeProvider},
+    theme::BaseTheme,
+    ThemeProvider,
 };
+use features::HelloFeature;
 
 #[component]
 pub fn App() -> impl IntoView {
-    let (theme, set_theme) = create_signal(Theme::default_light());
+    let (theme, set_theme) = create_signal(BaseTheme::default_light());
 
     view! {
         <ThemeProvider theme=theme set_theme=set_theme>

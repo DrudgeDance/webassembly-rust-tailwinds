@@ -1,26 +1,26 @@
 use leptos::*;
 use ui_components::{
     components::hello::Hello as UIHello,
-    theme::{Theme, Mode, Season},
+    theme::{BaseTheme, Mode, Theme},
 };
 use crate::services;
 
 #[component]
 pub fn HelloFeature() -> impl IntoView {
     let (message, set_message) = create_signal("Hello, World!".to_string());
-    let theme = use_context::<Signal<Theme>>().expect("Theme should be provided by ThemeProvider");
-    let set_theme = use_context::<WriteSignal<Theme>>().expect("Theme setter should be provided");
+    let base_theme = use_context::<Signal<BaseTheme>>().expect("Theme should be provided by ThemeProvider");
+    let set_theme = use_context::<WriteSignal<BaseTheme>>().expect("Theme setter should be provided");
     
-    let mode = create_memo(move |_| theme.get().mode);
-    let season = create_memo(move |_| theme.get().season);
+    let theme = create_memo(move |_| base_theme.get());
     
-    let handle_theme_change = move |(new_mode, new_season): (Mode, Option<Season>)| {
-        let new_theme = Theme {
+    let handle_theme_change = move |(new_mode, new_theme): (Mode, Option<Theme>)| {
+        let current = base_theme.get();
+        let new_base_theme = BaseTheme {
             mode: new_mode,
-            season: new_season,
-            ..theme.get()
+            theme: new_theme,
+            ..current
         };
-        set_theme.set(new_theme);
+        set_theme.set(new_base_theme);
     };
 
     // Optionally update it after fetch
@@ -35,8 +35,6 @@ pub fn HelloFeature() -> impl IntoView {
     view! {
         <UIHello 
             message=message
-            mode=mode
-            season=season
             theme=theme
             on_theme_change=handle_theme_change
         />
