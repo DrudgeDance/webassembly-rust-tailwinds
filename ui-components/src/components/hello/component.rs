@@ -1,6 +1,6 @@
 use leptos::*;
-use crate::theme::{BaseTheme, Mode, Theme};
-use super::themes;
+use crate::theme::BaseTheme;
+use super::theme_switcher::create_theme_memo;
 use crate::layouts::Base;
 
 const DEFAULT_MESSAGE: &str = "Hello, World!";
@@ -10,16 +10,7 @@ pub fn Hello(
     #[prop(into)] theme: Signal<BaseTheme>,
     #[prop(into, optional)] message: Option<Signal<String>>,
 ) -> impl IntoView {
-    let theme_memo = create_memo(move |_| {
-        match (theme.get().mode, theme.get().theme) {
-            (Mode::Light, None) => themes::get_light_default(),
-            (Mode::Dark, None) => themes::get_dark_default(),
-            (Mode::Light, Some(Theme::Spring)) => themes::get_light_spring(),
-            (Mode::Dark, Some(Theme::Spring)) => themes::get_dark_spring(),
-            (Mode::Light, Some(Theme::Summer)) => themes::get_light_summer(),
-            (Mode::Dark, Some(Theme::Summer)) => themes::get_dark_summer(),
-        }
-    });
+    let theme_memo = create_theme_memo(theme);
 
     let display_message = create_memo(move |_| {
         message.map(|m| m.get()).unwrap_or_else(|| DEFAULT_MESSAGE.to_string())

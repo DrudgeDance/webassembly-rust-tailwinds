@@ -1,5 +1,6 @@
 mod component;
-pub mod themes;
+mod themes;
+mod theme_switcher;
 
 pub use component::Hello;
 
