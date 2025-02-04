@@ -41,10 +41,10 @@ pub fn Layout(
                     theme_memo.get().colors.border,
                 )
             >
-                <div class="flex items-center">
-                    <h1 class="text-xl font-bold leading-relaxed">My App</h1>
+                <div class="flex items-center h-10">
+                    <h1 class="text-xl font-bold">My App</h1>
                 </div>
-                <div class="flex items-center relative overflow-visible">
+                <div class="flex items-center h-10">
                     <ThemeSelector02
                         theme=theme
                         on_theme_change=move |new_theme| set_theme.set(new_theme)

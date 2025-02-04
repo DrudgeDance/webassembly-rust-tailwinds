@@ -71,9 +71,9 @@ pub fn ThemeSelector02(
     };
 
     view! {
-        <div class="relative z-50">
+        <div class="relative inline-block">
             <button
-                class="flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200"
+                class="inline-flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200"
                 class=move || {
                     let (bg, text, hover) = get_theme_colors(theme.get().theme);
                     format!("{} {} {}", bg, text, hover)
@@ -121,17 +121,12 @@ pub fn ThemeSelector02(
 
             // Dropdown menu
             <div
-                class="absolute left-0 right-0 mt-3 p-2 rounded-lg shadow-lg space-y-2 transition-all duration-200"
+                class="absolute right-0 mt-2 w-48 p-2 rounded-lg shadow-lg space-y-2 transition-all duration-200"
                 class=move || {
                     let (bg, _, _) = get_theme_colors(None);
-                    format!("{}", bg)
+                    format!("{} {}", bg, if is_open.get() { "block" } else { "hidden" })
                 }
-                style=move || format!(
-                    "opacity: {}; transform: translateY({}); pointer-events: {};",
-                    if is_open.get() { "1" } else { "0" },
-                    if is_open.get() { "0" } else { "-8px" },
-                    if is_open.get() { "auto" } else { "none" }
-                )
+                style="min-width: 200px;"
             >
                 {theme_button(None, "Default", "🎨")}
                 {theme_button(Some(Theme::Spring), "Spring", "🌱")}
