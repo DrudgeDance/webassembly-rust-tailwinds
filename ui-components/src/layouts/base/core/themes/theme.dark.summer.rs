@@ -7,12 +7,12 @@ pub fn get_theme() -> ComponentTheme<LayoutColors> {
         mode: Mode::Dark,
         theme: Some(Theme::Summer),
         colors: LayoutColors {
-            background: "#742a2a".to_string(),
-            surface: "#9b2c2c".to_string(),
-            text: "#feb2b2".to_string(),
-            text_muted: "#f56565".to_string(),
-            border: "#c53030".to_string(),
-            shadow: "rgba(245, 101, 101, 0.25)".to_string(),
+            background: "#7B341E".to_string(),
+            surface: "#7B341E".to_string(),
+            text: "#FEEBC8".to_string(),
+            text_muted: "#ED8936".to_string(),
+            border: "#9C4221".to_string(),
+            shadow: "rgba(237, 137, 54, 0.25)".to_string(),
         },
     }
 } 

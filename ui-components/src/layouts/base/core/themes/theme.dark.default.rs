@@ -7,11 +7,11 @@ pub fn get_theme() -> ComponentTheme<LayoutColors> {
         mode: Mode::Dark,
         theme: None,
         colors: LayoutColors {
-            background: "#1a202c".to_string(),
-            surface: "#2d3748".to_string(),
-            text: "#f7fafc".to_string(),
-            text_muted: "#a0aec0".to_string(),
-            border: "#4a5568".to_string(),
+            background: "#1F2937".to_string(),
+            surface: "#1F2937".to_string(),
+            text: "#F9FAFB".to_string(),
+            text_muted: "#9CA3AF".to_string(),
+            border: "#374151".to_string(),
             shadow: "rgba(0, 0, 0, 0.25)".to_string(),
         },
     }

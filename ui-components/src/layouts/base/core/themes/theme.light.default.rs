@@ -8,7 +8,7 @@ pub fn get_theme() -> ComponentTheme<LayoutColors> {
         theme: None,
         colors: LayoutColors {
             background: "#ffffff".to_string(),
-            surface: "#f8fafc".to_string(),
+            surface: "#ffffff".to_string(),
             text: "#1a202c".to_string(),
             text_muted: "#4a5568".to_string(),
             border: "#e2e8f0".to_string(),
