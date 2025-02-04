@@ -1,11 +1,18 @@
 pub mod features;
 pub mod services;
 pub mod providers;
+pub mod pages;
 
 use leptos::*;
+use leptos_router::*;
 use crate::features::hello::HelloFeature;
+use crate::pages::LoginPage;
 use crate::providers::theme::ThemeProvider;
 use ui_components::theme::{BaseTheme, Mode, ThemeColors};
+
+// Import theme CSS
+#[cfg(feature = "hydrate")]
+use ui_components::styles::theme_css;
 
 #[component]
 pub fn App() -> impl IntoView {
@@ -26,7 +33,18 @@ pub fn App() -> impl IntoView {
 
     view! {
         <ThemeProvider theme=theme set_theme=set_theme>
-            <HelloFeature theme=theme />
+            <Router>
+                <Routes>
+                    <Route
+                        path="/"
+                        view=move || view! { <HelloFeature theme=theme /> }
+                    />
+                    <Route
+                        path="/login"
+                        view=move || view! { <LoginPage theme=theme /> }
+                    />
+                </Routes>
+            </Router>
         </ThemeProvider>
     }
 }
