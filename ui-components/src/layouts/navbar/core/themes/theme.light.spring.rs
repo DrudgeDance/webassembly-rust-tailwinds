@@ -1,16 +1,15 @@
-use crate::theme::{ComponentTheme, Mode, Theme};
-use super::types::NavbarColors;
+use super::types::NavbarTheme;
+use crate::theme::{Mode, Theme};
 
-pub fn get_theme() -> ComponentTheme<NavbarColors> {
-    ComponentTheme {
-        name: "Light Spring".to_string(),
+pub fn get_theme() -> NavbarTheme {
+    NavbarTheme {
+        name: "Light Spring".into(),
         mode: Mode::Light,
         theme: Some(Theme::Spring),
-        colors: NavbarColors {
-            background: "#f0fff4".to_string(),
-            text: "#22543d".to_string(),
-            text_muted: "#48bb78".to_string(),
-            border: "#9ae6b4".to_string(),
+        colors: super::types::NavbarColors {
+            background: "#F0FFF4".into(),
+            text: "#276749".into(),
+            border: "#48BB78".into(),
         },
     }
 } 

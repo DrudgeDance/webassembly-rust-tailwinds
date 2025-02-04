@@ -60,7 +60,7 @@ impl BaseTheme {
 }
 
 // Colors for the base theme
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ThemeColors {
     pub background: String,
     pub surface: String,

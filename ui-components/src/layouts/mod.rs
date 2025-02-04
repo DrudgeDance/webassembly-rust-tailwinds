@@ -3,9 +3,10 @@
 
 // For now, this module is empty but structured for future layout components 
 
+
 pub mod navbar;
 pub mod main_content;
-pub mod navigation;
+pub mod base;
 
 // Re-export only what's being used
-pub use navigation::core::Layout; 
+pub use base::Base; 

@@ -1,16 +1,15 @@
-use crate::theme::{ComponentTheme, Mode, Theme};
-use super::types::NavbarColors;
+use super::types::NavbarTheme;
+use crate::theme::{Mode, Theme};
 
-pub fn get_theme() -> ComponentTheme<NavbarColors> {
-    ComponentTheme {
-        name: "Dark Summer".to_string(),
+pub fn get_theme() -> NavbarTheme {
+    NavbarTheme {
+        name: "Dark Summer".into(),
         mode: Mode::Dark,
         theme: Some(Theme::Summer),
-        colors: NavbarColors {
-            background: "#742a2a".to_string(),
-            text: "#feb2b2".to_string(),
-            text_muted: "#f56565".to_string(),
-            border: "#c53030".to_string(),
+        colors: super::types::NavbarColors {
+            background: "#7B341E".into(),
+            text: "#FEEBC8".into(),
+            border: "#ED8936".into(),
         },
     }
 } 

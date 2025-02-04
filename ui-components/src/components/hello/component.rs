@@ -1,7 +1,7 @@
 use leptos::*;
 use crate::theme::{BaseTheme, Mode, Theme};
 use super::themes;
-use crate::layouts::navigation::core::Layout;
+use crate::layouts::Base;
 
 const DEFAULT_MESSAGE: &str = "Hello, World!";
 
@@ -26,8 +26,8 @@ pub fn Hello(
     });
 
     view! {
-        <Layout theme=theme>
-            <div class="flex items-center justify-center p-8">
+        <Base theme=theme>
+            <div class="flex items-center justify-center">
                 <div
                     class="p-6 rounded-lg"
                     style=move || format!(
@@ -47,6 +47,6 @@ pub fn Hello(
                     </p>
                 </div>
             </div>
-        </Layout>
+        </Base>
     }
 } 

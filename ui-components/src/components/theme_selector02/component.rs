@@ -1,35 +1,9 @@
 use leptos::*;
-use leptos::ev::MouseEvent;
 use leptos::html::Div;
-use leptos::wasm_bindgen::JsCast;
-use web_sys::{Node, Element};
-use crate::theme::{BaseTheme, Mode, Theme};
+use crate::theme::{BaseTheme, Theme};
 use super::dropdown::ThemeSelectorDropdown;
-
-pub(super) fn get_theme_colors(theme_opt: Option<Theme>, current_theme: Signal<BaseTheme>) -> (&'static str, &'static str, &'static str) {
-    let mode = current_theme.with_untracked(|t| t.mode);
-    match (mode, theme_opt) {
-        (Mode::Light, None) => ("bg-slate-100", "text-slate-800", "hover:bg-slate-200"),
-        (Mode::Dark, None) => ("bg-slate-800", "text-slate-100", "hover:bg-slate-700"),
-        (Mode::Light, Some(Theme::Spring)) => ("bg-green-100", "text-green-800", "hover:bg-green-200"),
-        (Mode::Dark, Some(Theme::Spring)) => ("bg-green-900", "text-green-100", "hover:bg-green-800"),
-        (Mode::Light, Some(Theme::Summer)) => ("bg-amber-100", "text-amber-800", "hover:bg-amber-200"),
-        (Mode::Dark, Some(Theme::Summer)) => ("bg-amber-900", "text-amber-100", "hover:bg-amber-800"),
-    }
-}
-
-fn handle_click_outside(event: MouseEvent, container_ref: NodeRef<Div>, set_is_open: WriteSignal<bool>) {
-    if let Some(container) = container_ref.get() {
-        if let Some(target) = event.target() {
-            if let Some(element) = target.dyn_ref::<Element>() {
-                let target_node: &Node = element.as_ref();
-                if !container.contains(Some(target_node)) {
-                    set_is_open.set(false);
-                }
-            }
-        }
-    }
-}
+use super::theme_switcher::{get_theme_colors, create_theme_handlers, get_theme_icon, get_mode_icon};
+use super::click_handler::handle_click_outside;
 
 #[component]
 pub fn ThemeSelector02(
@@ -48,28 +22,12 @@ pub fn ThemeSelector02(
         handle_click_outside(e, container_ref, set_is_open);
     });
 
-    let handle_theme_select = move |theme_opt: Option<Theme>| {
-        let current = theme.get();
-        let new_theme = BaseTheme {
-            theme: theme_opt,
-            ..current.clone()
-        };
-        set_theme.set(new_theme.clone());
-        on_theme_change.call(new_theme);
-        set_is_open.set(false);
-    };
-
-    let handle_mode_toggle = move |ev: MouseEvent| {
-        ev.stop_propagation();  // Prevent dropdown from opening
-        let current = theme.get();
-        let new_theme = BaseTheme {
-            mode: if current.mode == Mode::Light { Mode::Dark } else { Mode::Light },
-            ..current.clone()
-        };
-        set_theme.set(new_theme.clone());
-        on_theme_change.call(new_theme);
-        set_is_open.set(false);  // Close the dropdown when toggling mode
-    };
+    let (handle_theme_select, handle_mode_toggle) = create_theme_handlers(
+        theme,
+        set_theme,
+        on_theme_change,
+        set_is_open,
+    );
 
     view! {
         <div 
@@ -88,18 +46,14 @@ pub fn ThemeSelector02(
                     class="text-lg cursor-pointer hover:opacity-80" 
                     on:click=handle_mode_toggle
                 >
-                    {move || if theme.get().mode == Mode::Light { "☀️" } else { "🌙" }}
+                    {move || get_mode_icon(theme.get().mode)}
                 </span>
                 <span class="mr-2"></span>
                 <span 
                     class="border-l" 
                     style="border-color: currentColor"
                 ></span>
-                <span class="mx-2 text-lg">{move || match theme.get().theme {
-                    None => "🎨",
-                    Some(Theme::Spring) => "🌱",
-                    Some(Theme::Summer) => "🌞",
-                }}</span>
+                <span class="mx-2 text-lg">{move || get_theme_icon(theme.get().theme)}</span>
                 <span class="text-sm transition-transform duration-200" 
                     class=move || if is_open.get() { "rotate-180" } else { "" }
                 >

@@ -1,33 +1,27 @@
 use leptos::*;
-use crate::theme::{BaseTheme, Mode, Theme};
-use super::themes;
+use crate::theme::BaseTheme;
+use super::theme_switcher::create_theme_memo;
 
 #[component]
 pub fn MainContent(
     #[prop(into)] theme: Signal<BaseTheme>,
     children: Children,
 ) -> impl IntoView {
-    let theme_memo = create_memo(move |_| {
-        match (theme.get().mode, theme.get().theme) {
-            (Mode::Light, None) => themes::get_light_default(),
-            (Mode::Dark, None) => themes::get_dark_default(),
-            (Mode::Light, Some(Theme::Spring)) => themes::get_light_spring(),
-            (Mode::Dark, Some(Theme::Spring)) => themes::get_dark_spring(),
-            (Mode::Light, Some(Theme::Summer)) => themes::get_light_summer(),
-            (Mode::Dark, Some(Theme::Summer)) => themes::get_dark_summer(),
-        }
-    });
+    let theme_memo = create_theme_memo(theme);
 
     view! {
         <main 
             class="flex-grow flex flex-col items-center justify-center p-8"
-            style=move || format!(
-                "background-color: {}; color: {}; border-top: 1px solid {}; box-shadow: inset 0 2px 4px {}",
-                theme_memo.get().colors.background,
-                theme_memo.get().colors.text,
-                theme_memo.get().colors.border,
-                theme_memo.get().colors.shadow,
-            )
+            style=move || {
+                let theme = theme_memo.get();
+                format!(
+                    "background-color: {}; color: {}; border-top: 1px solid {}; box-shadow: inset 0 2px 4px {}",
+                    theme.colors.background,
+                    theme.colors.text,
+                    theme.colors.border,
+                    theme.colors.shadow,
+                )
+            }
         >
             {children()}
         </main>

@@ -29,4 +29,4 @@ pub fn App() -> impl IntoView {
             <HelloFeature theme=theme />
         </ThemeProvider>
     }
-} 
+}

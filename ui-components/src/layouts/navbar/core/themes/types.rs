@@ -4,16 +4,14 @@ use crate::theme::{BaseTheme, ComponentColors, ComponentTheme};
 pub struct NavbarColors {
     pub background: String,
     pub text: String,
-    pub text_muted: String,
     pub border: String,
 }
 
 impl ComponentColors for NavbarColors {
     fn from_theme(base_theme: &BaseTheme) -> Self {
         Self {
-            background: base_theme.colors.surface.clone(),
+            background: base_theme.colors.background.clone(),
             text: base_theme.colors.text.clone(),
-            text_muted: base_theme.colors.text_muted.clone(),
             border: base_theme.colors.primary.clone(),
         }
     }
