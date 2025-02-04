@@ -1,6 +1,7 @@
 use leptos::*;
 use crate::theme::{Mode, Theme, BaseTheme};
 use super::themes;
+use super::defaults::APP_TITLE;
 use crate::components::theme_selector::ThemeSelector;
 
 #[component]
@@ -39,7 +40,7 @@ pub fn Hello(
             >
                 <div class="flex justify-between items-center max-w-4xl mx-auto">
                     <h1 class="text-2xl font-bold">
-                        "My App"
+                        {APP_TITLE}
                     </h1>
                     <ThemeSelector
                         current_theme=theme
