@@ -1,7 +1,7 @@
 use leptos::*;
 use crate::theme::{BaseTheme, Mode, Theme};
 use super::themes;
-use crate::layouts::navbar::Navbar;
+use crate::components::theme_selector02::ThemeSelector02;
 
 #[component]
 pub fn Layout(
@@ -19,6 +19,9 @@ pub fn Layout(
         }
     });
 
+    let set_theme = use_context::<WriteSignal<BaseTheme>>()
+        .expect("ThemeProvider should be present");
+
     view! {
         <div
             class="min-h-screen"
@@ -29,7 +32,25 @@ pub fn Layout(
                 theme_memo.get().colors.shadow,
             )
         >
-            <Navbar theme=theme />
+            <nav 
+                class="relative px-4 py-2 flex items-center justify-between"
+                style=move || format!(
+                    "background-color: {}; color: {}; border-bottom: 1px solid {}",
+                    theme_memo.get().colors.background,
+                    theme_memo.get().colors.text,
+                    theme_memo.get().colors.border,
+                )
+            >
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold leading-relaxed">My App</h1>
+                </div>
+                <div class="flex items-center relative overflow-visible">
+                    <ThemeSelector02
+                        theme=theme
+                        on_theme_change=move |new_theme| set_theme.set(new_theme)
+                    />
+                </div>
+            </nav>
             <main class="flex-grow flex flex-col items-center justify-center space-y-8">
                 {children()}
             </main>

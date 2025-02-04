@@ -1,7 +1,7 @@
 use leptos::*;
 use crate::theme::{BaseTheme, Mode, Theme};
 use super::themes;
-use crate::components::theme_selector::ThemeSelector;
+use crate::components::theme_selector02::ThemeSelector02;
 
 #[component]
 pub fn Navbar(
@@ -32,10 +32,12 @@ pub fn Navbar(
             )
         >
             <h1 class="text-xl font-bold">My App</h1>
-            <ThemeSelector
-                theme=theme
-                on_theme_change=move |new_theme| set_theme.set(new_theme)
-            />
+            <div class="flex items-center gap-4">
+                <ThemeSelector02
+                    theme=theme
+                    on_theme_change=move |new_theme| set_theme.set(new_theme)
+                />
+            </div>
         </nav>
     }
 } 

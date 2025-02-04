@@ -3,8 +3,7 @@ pub mod theme;
 pub mod styles;
 pub mod layouts;
 
-pub use components::Hello;
-pub use components::ThemeSelector;
+pub use components::theme_selector02::ThemeSelector02;
 pub use theme::{BaseTheme, Mode, Theme, ThemeColors};
 pub use layouts::Layout;
 
