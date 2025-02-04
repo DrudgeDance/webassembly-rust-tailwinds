@@ -68,6 +68,7 @@ pub fn ThemeSelector02(
         };
         set_theme.set(new_theme.clone());
         on_theme_change.call(new_theme);
+        set_is_open.set(false);  // Close the dropdown when toggling mode
     };
 
     view! {
