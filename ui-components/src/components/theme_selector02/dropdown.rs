@@ -10,7 +10,7 @@ pub fn ThemeSelectorDropdown(
 ) -> impl IntoView {
     let theme_button = move |theme_opt: Option<Theme>, label: &'static str, icon: &'static str| {
         let (bg, text, hover) = super::get_theme_colors(theme_opt, theme);
-        let base_classes = "w-full px-4 py-2 rounded-lg text-left transition-all duration-200 flex items-center gap-2";
+        let base_classes = "w-full px-4 py-1.25 rounded-lg text-left transition-all duration-200 flex items-center gap-2";
         
         view! {
             <button

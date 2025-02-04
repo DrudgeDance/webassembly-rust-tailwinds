@@ -1,5 +1,8 @@
 use leptos::*;
 use leptos::ev::MouseEvent;
+use leptos::html::Div;
+use leptos::wasm_bindgen::JsCast;
+use web_sys::{Node, Element};
 use crate::theme::{BaseTheme, Mode, Theme};
 use super::dropdown::ThemeSelectorDropdown;
 
@@ -15,6 +18,19 @@ pub(super) fn get_theme_colors(theme_opt: Option<Theme>, current_theme: Signal<B
     }
 }
 
+fn handle_click_outside(event: MouseEvent, container_ref: NodeRef<Div>, set_is_open: WriteSignal<bool>) {
+    if let Some(container) = container_ref.get() {
+        if let Some(target) = event.target() {
+            if let Some(element) = target.dyn_ref::<Element>() {
+                let target_node: &Node = element.as_ref();
+                if !container.contains(Some(target_node)) {
+                    set_is_open.set(false);
+                }
+            }
+        }
+    }
+}
+
 #[component]
 pub fn ThemeSelector02(
     #[prop(into)] theme: Signal<BaseTheme>,
@@ -25,6 +41,12 @@ pub fn ThemeSelector02(
     
     let (is_open, set_is_open) = create_signal(false);
     let (active_preview, set_active_preview) = create_signal::<Option<Theme>>(None);
+    let container_ref = create_node_ref::<Div>();
+
+    // Setup click outside listener
+    window_event_listener(ev::click, move |e| {
+        handle_click_outside(e, container_ref, set_is_open);
+    });
 
     let handle_theme_select = move |theme_opt: Option<Theme>| {
         let current = theme.get();
@@ -49,7 +71,10 @@ pub fn ThemeSelector02(
     };
 
     view! {
-        <div class="relative inline-flex flex-col">
+        <div 
+            class="relative inline-flex flex-col"
+            node_ref=container_ref
+        >
             <button
                 class="inline-flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200"
                 class=move || {
@@ -58,24 +83,23 @@ pub fn ThemeSelector02(
                 }
                 on:click=move |_| set_is_open.update(|v| *v = !*v)
             >
-                <span class="text-lg">{move || match theme.get().theme {
-                    None => "🎨",
-                    Some(Theme::Spring) => "🌱",
-                    Some(Theme::Summer) => "🌞",
-                }}</span>
-                <span>{move || match theme.get().theme {
-                    None => "Default",
-                    Some(Theme::Spring) => "Spring",
-                    Some(Theme::Summer) => "Summer",
-                }}</span>
                 <span 
-                    class="text-lg ml-2 border-l pl-2 cursor-pointer hover:opacity-80" 
-                    style="border-color: currentColor"
+                    class="text-lg cursor-pointer hover:opacity-80" 
                     on:click=handle_mode_toggle
                 >
                     {move || if theme.get().mode == Mode::Light { "☀️" } else { "🌙" }}
                 </span>
-                <span class="text-sm transition-transform duration-200 ml-1" 
+                <span class="mr-2"></span>
+                <span 
+                    class="border-l" 
+                    style="border-color: currentColor"
+                ></span>
+                <span class="mx-2 text-lg">{move || match theme.get().theme {
+                    None => "🎨",
+                    Some(Theme::Spring) => "🌱",
+                    Some(Theme::Summer) => "🌞",
+                }}</span>
+                <span class="text-sm transition-transform duration-200" 
                     class=move || if is_open.get() { "rotate-180" } else { "" }
                 >
                     "▼"
