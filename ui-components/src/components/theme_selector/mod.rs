@@ -1,5 +1,5 @@
 mod component;
-pub mod themes;
+mod themes;
 
 pub use component::ThemeSelector;
 pub use themes::*; 
