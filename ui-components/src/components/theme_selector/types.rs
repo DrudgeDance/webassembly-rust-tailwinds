@@ -1,4 +1,4 @@
-use crate::theme::{ComponentColors, Theme};
+use crate::theme::{ComponentColors, BaseTheme};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct ThemeSelectorColors {
@@ -11,7 +11,7 @@ pub struct ThemeSelectorColors {
 }
 
 impl ComponentColors for ThemeSelectorColors {
-    fn apply_base_theme(&mut self, base_theme: &Theme) {
+    fn apply_base_theme(&mut self, base_theme: &BaseTheme) {
         self.button_bg = base_theme.colors.surface.clone();
         self.button_text = base_theme.colors.text.clone();
         self.button_border = base_theme.colors.surface.clone();

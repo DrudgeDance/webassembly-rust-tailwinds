@@ -5,7 +5,7 @@ pub fn get_theme() -> ComponentTheme<ThemeSelectorColors> {
     ComponentTheme {
         name: "Theme Selector Dark Default".to_string(),
         mode: Mode::Dark,
-        season: None,
+        theme: None,
         colors: ThemeSelectorColors {
             button_bg: "#374151".to_string(),    // Dark gray
             button_text: "#F9FAFB".to_string(),   // Very light gray

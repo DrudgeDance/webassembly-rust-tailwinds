@@ -27,9 +27,9 @@ module.exports = {
         text: 'var(--text)',
         'text-muted': 'var(--text-muted)',
         accent: 'var(--accent)',
-        'seasonal-primary': 'var(--seasonal-primary)',
-        'seasonal-secondary': 'var(--seasonal-secondary)',
-        'seasonal-accent': 'var(--seasonal-accent)',
+        'primary': 'var(--primary)',
+        'secondary': 'var(--secondary)',
+        'accent': 'var(--accent)',
       },
       spacing: {
         '128': '32rem',

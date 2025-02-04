@@ -1,11 +1,11 @@
-use crate::theme::{ComponentTheme, Mode, Season};
+use crate::theme::{ComponentTheme, Mode, Theme};
 use crate::components::theme_selector::types::ThemeSelectorColors;
 
 pub fn get_theme() -> ComponentTheme<ThemeSelectorColors> {
     ComponentTheme {
         name: "Theme Selector Light Spring".to_string(),
         mode: Mode::Light,
-        season: Some(Season::Spring),
+        theme: Some(Theme::Spring),
         colors: ThemeSelectorColors {
             button_bg: "#F0FFF4".to_string(),    // Very light spring green
             button_text: "#111827".to_string(),   // Very dark gray

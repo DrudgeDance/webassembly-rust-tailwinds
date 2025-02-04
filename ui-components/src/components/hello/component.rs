@@ -1,22 +1,20 @@
 use leptos::*;
-use crate::theme::{Mode, Season, Theme};
+use crate::theme::{Mode, Theme, BaseTheme};
 use super::themes;
 use crate::components::theme_selector::ThemeSelector;
 
 #[component]
 pub fn Hello(
     #[prop(into)] message: Signal<String>,
-    #[prop(into)] mode: Signal<Mode>,
-    #[prop(into)] season: Signal<Option<Season>>,
-    #[prop(into)] theme: Signal<Theme>,
-    #[prop(into)] on_theme_change: Callback<(Mode, Option<Season>)>,
+    #[prop(into)] theme: Signal<BaseTheme>,
+    #[prop(into)] on_theme_change: Callback<(Mode, Option<Theme>)>,
 ) -> impl IntoView {
     let theme_memo = create_memo(move |_| {
-        match (mode.get(), season.get()) {
-            (Mode::Light, Some(Season::Spring)) => themes::get_light_spring(),
-            (Mode::Dark, Some(Season::Spring)) => themes::get_dark_spring(),
-            (Mode::Light, Some(Season::Summer)) => themes::get_light_summer(),
-            (Mode::Dark, Some(Season::Summer)) => themes::get_dark_summer(),
+        match (theme.get().mode, theme.get().theme) {
+            (Mode::Light, Some(Theme::Spring)) => themes::get_light_spring(),
+            (Mode::Dark, Some(Theme::Spring)) => themes::get_dark_spring(),
+            (Mode::Light, Some(Theme::Summer)) => themes::get_light_summer(),
+            (Mode::Dark, Some(Theme::Summer)) => themes::get_dark_summer(),
             (Mode::Light, None) => themes::get_light_default(),
             (Mode::Dark, None) => themes::get_dark_default(),
         }
@@ -55,8 +53,8 @@ pub fn Hello(
                 </h2>
                 <p class="text-text-muted">
                     {move || format!("Current theme: {} - {}", 
-                        if mode.get() == Mode::Light { "Light" } else { "Dark" },
-                        season.get().map(|s| format!("{:?}", s)).unwrap_or_else(|| "Default".to_string())
+                        if theme.get().mode == Mode::Light { "Light" } else { "Dark" },
+                        theme.get().theme.map(|t| format!("{:?}", t)).unwrap_or_else(|| "Default".to_string())
                     )}
                 </p>
             </main>

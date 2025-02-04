@@ -1,19 +1,19 @@
 use leptos::*;
-use crate::theme::{Mode, Theme, Season};
+use crate::theme::{Mode, Theme, BaseTheme};
 use web_sys::KeyboardEvent;
 use super::themes;
 
 #[component]
 pub fn ThemeSelector(
-    #[prop(into)] current_theme: Signal<Theme>,
-    #[prop(into)] on_theme_change: Callback<(Mode, Option<Season>)>,
+    #[prop(into)] current_theme: Signal<BaseTheme>,
+    #[prop(into)] on_theme_change: Callback<(Mode, Option<Theme>)>,
 ) -> impl IntoView {
     let theme_memo = create_memo(move |_| {
-        match (current_theme.get().mode, current_theme.get().season) {
-            (Mode::Light, Some(Season::Spring)) => themes::get_light_spring(),
-            (Mode::Dark, Some(Season::Spring)) => themes::get_dark_spring(),
-            (Mode::Light, Some(Season::Summer)) => themes::get_light_summer(),
-            (Mode::Dark, Some(Season::Summer)) => themes::get_dark_summer(),
+        match (current_theme.get().mode, current_theme.get().theme) {
+            (Mode::Light, Some(Theme::Spring)) => themes::get_light_spring(),
+            (Mode::Dark, Some(Theme::Spring)) => themes::get_dark_spring(),
+            (Mode::Light, Some(Theme::Summer)) => themes::get_light_summer(),
+            (Mode::Dark, Some(Theme::Summer)) => themes::get_dark_summer(),
             (Mode::Light, None) => themes::get_light_default(),
             (Mode::Dark, None) => themes::get_dark_default(),
         }
@@ -25,12 +25,12 @@ pub fn ThemeSelector(
             Mode::Light => Mode::Dark,
             Mode::Dark => Mode::Light,
         };
-        on_theme_change.call((new_mode, current.season));
+        on_theme_change.call((new_mode, current.theme));
     };
 
-    let handle_season_change = move |new_season: Option<Season>| {
+    let handle_theme_change = move |new_theme: Option<Theme>| {
         let current = current_theme.get();
-        on_theme_change.call((current.mode, new_season));
+        on_theme_change.call((current.mode, new_theme));
     };
 
     // Set up global keyboard shortcuts
@@ -46,29 +46,29 @@ pub fn ThemeSelector(
                         Mode::Light => Mode::Dark,
                         Mode::Dark => Mode::Light,
                     };
-                    switch_theme.call((new_mode, current.season));
+                    switch_theme.call((new_mode, current.theme));
                 },
                 "x" => {
-                    // Next season
+                    // Next theme
                     ev.prevent_default();
                     let current = current_theme.get();
-                    let new_season = match current.season {
-                        None => Some(Season::Spring),
-                        Some(Season::Spring) => Some(Season::Summer),
-                        Some(Season::Summer) => None,
+                    let new_theme = match current.theme {
+                        None => Some(Theme::Spring),
+                        Some(Theme::Spring) => Some(Theme::Summer),
+                        Some(Theme::Summer) => None,
                     };
-                    switch_theme.call((current.mode, new_season));
+                    switch_theme.call((current.mode, new_theme));
                 },
                 "w" => {
-                    // Previous season
+                    // Previous theme
                     ev.prevent_default();
                     let current = current_theme.get();
-                    let new_season = match current.season {
-                        None => Some(Season::Summer),
-                        Some(Season::Spring) => None,
-                        Some(Season::Summer) => Some(Season::Spring),
+                    let new_theme = match current.theme {
+                        None => Some(Theme::Summer),
+                        Some(Theme::Spring) => None,
+                        Some(Theme::Summer) => Some(Theme::Spring),
                     };
-                    switch_theme.call((current.mode, new_season));
+                    switch_theme.call((current.mode, new_theme));
                 },
                 _ => (),
             }
@@ -111,22 +111,22 @@ pub fn ThemeSelector(
                 <div class="flex space-x-2">
                     <button
                         class="px-4 py-2 rounded-lg"
-                        style=move || active_button_style(current_theme.get().season.is_none())
-                        on:click=move |_| handle_season_change(None)
+                        style=move || active_button_style(current_theme.get().theme.is_none())
+                        on:click=move |_| handle_theme_change(None)
                     >
                         "Default"
                     </button>
                     <button
                         class="px-4 py-2 rounded-lg"
-                        style=move || active_button_style(current_theme.get().season == Some(Season::Spring))
-                        on:click=move |_| handle_season_change(Some(Season::Spring))
+                        style=move || active_button_style(current_theme.get().theme == Some(Theme::Spring))
+                        on:click=move |_| handle_theme_change(Some(Theme::Spring))
                     >
                         "Spring"
                     </button>
                     <button
                         class="px-4 py-2 rounded-lg"
-                        style=move || active_button_style(current_theme.get().season == Some(Season::Summer))
-                        on:click=move |_| handle_season_change(Some(Season::Summer))
+                        style=move || active_button_style(current_theme.get().theme == Some(Theme::Summer))
+                        on:click=move |_| handle_theme_change(Some(Theme::Summer))
                     >
                         "Summer"
                     </button>
@@ -137,10 +137,10 @@ pub fn ThemeSelector(
                             Mode::Light => "Light",
                             Mode::Dark => "Dark",
                         },
-                        match current_theme.get().season {
+                        match current_theme.get().theme {
                             None => "Default",
-                            Some(Season::Spring) => "Spring",
-                            Some(Season::Summer) => "Summer",
+                            Some(Theme::Spring) => "Spring",
+                            Some(Theme::Summer) => "Summer",
                         }
                     )}
                 </div>

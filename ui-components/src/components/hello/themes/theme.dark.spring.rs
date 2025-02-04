@@ -1,11 +1,11 @@
-use crate::theme::{ComponentTheme, Mode, Season};
+use crate::theme::{ComponentTheme, Mode, Theme};
 use crate::components::hello::types::HelloColors;
 
 pub fn get_theme() -> ComponentTheme<HelloColors> {
     ComponentTheme {
         name: "Hello Dark Spring".to_string(),
         mode: Mode::Dark,
-        season: Some(Season::Spring),
+        theme: Some(Theme::Spring),
         colors: HelloColors {
             text: "#F9FAFB".to_string(),         // Very light gray
             background: "#1A2F1A".to_string(),    // Dark spring green

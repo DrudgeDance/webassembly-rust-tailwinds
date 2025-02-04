@@ -1,5 +1,5 @@
 #[derive(Debug, Clone, Copy, PartialEq)]
-pub enum Season {
+pub enum Theme {
     Spring,
     Summer,
 }
@@ -12,7 +12,7 @@ pub enum Mode {
 
 // Base trait for component-specific colors
 pub trait ComponentColors: std::fmt::Debug + Clone {
-    fn apply_base_theme(&mut self, base_theme: &Theme);
+    fn apply_base_theme(&mut self, base_theme: &BaseTheme);
 }
 
 // Component-specific theme
@@ -20,20 +20,20 @@ pub trait ComponentColors: std::fmt::Debug + Clone {
 pub struct ComponentTheme<T: ComponentColors> {
     pub name: String,
     pub mode: Mode,
-    pub season: Option<Season>,
+    pub theme: Option<Theme>,
     pub colors: T,
 }
 
 // Base theme for the entire application
 #[derive(Debug, Clone, PartialEq)]
-pub struct Theme {
+pub struct BaseTheme {
     pub name: String,
     pub mode: Mode,
-    pub season: Option<Season>,
+    pub theme: Option<Theme>,
     pub colors: ThemeColors,
 }
 
-impl Theme {
+impl BaseTheme {
     pub fn default_light() -> Self {
         super::get_default_theme(Mode::Light)
     }
@@ -69,7 +69,4 @@ pub struct ThemeColors {
     pub primary: String,
     pub secondary: String,
     pub accent: String,
-    pub seasonal_primary: String,
-    pub seasonal_secondary: String,
-    pub seasonal_accent: String,
 } 

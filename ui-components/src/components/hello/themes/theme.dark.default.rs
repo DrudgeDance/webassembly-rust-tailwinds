@@ -5,7 +5,7 @@ pub fn get_theme() -> ComponentTheme<HelloColors> {
     ComponentTheme {
         name: "Hello Dark Default".to_string(),
         mode: Mode::Dark,
-        season: None,
+        theme: None,
         colors: HelloColors {
             text: "#F9FAFB".to_string(),         // Very light gray
             background: "#1A1C2A".to_string(),    // Dark blue-gray

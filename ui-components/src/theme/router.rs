@@ -1,21 +1,21 @@
-use super::types::{Mode, Season};
+use super::types::{Mode, Theme};
 
 pub struct ThemeRouter;
 
 impl ThemeRouter {
-    pub fn next_season(current_season: Option<Season>) -> Option<Season> {
-        match current_season {
-            None => Some(Season::Spring),
-            Some(Season::Spring) => Some(Season::Summer),
-            Some(Season::Summer) => None,
+    pub fn next_theme(current_theme: Option<Theme>) -> Option<Theme> {
+        match current_theme {
+            None => Some(Theme::Spring),
+            Some(Theme::Spring) => Some(Theme::Summer),
+            Some(Theme::Summer) => None,
         }
     }
 
-    pub fn previous_season(current_season: Option<Season>) -> Option<Season> {
-        match current_season {
-            None => Some(Season::Summer),
-            Some(Season::Spring) => None,
-            Some(Season::Summer) => Some(Season::Spring),
+    pub fn previous_theme(current_theme: Option<Theme>) -> Option<Theme> {
+        match current_theme {
+            None => Some(Theme::Summer),
+            Some(Theme::Spring) => None,
+            Some(Theme::Summer) => Some(Theme::Spring),
         }
     }
 

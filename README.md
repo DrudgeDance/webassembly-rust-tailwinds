@@ -31,7 +31,6 @@ my_first_rust_app/
 - **Styling**: Tailwind CSS for utility-first styling
 - **Theme System**:
   - Dynamic theme switching (Light/Dark modes)
-  - Seasonal themes (Spring/Summer variations)
   - CSS variable-based theming
   - Reactive theme updates
 - **Architecture**:
@@ -115,7 +114,6 @@ my_first_rust_app/
 The application includes a robust theme system that supports:
 
 - **Dynamic Themes**: Switch between light and dark modes
-- **Seasonal Variations**: Spring and Summer theme variations
 - **CSS Variables**: Theme colors are managed through CSS variables
 - **Reactive Updates**: Themes update instantly without page reload
 - **Consistent Styling**: All components use theme variables for colors
@@ -129,9 +127,9 @@ Theme variables available:
 --primary        /* Primary brand color */
 --secondary      /* Secondary brand color */
 --accent         /* Accent color */
---seasonal-primary    /* Season-specific primary */
---seasonal-secondary  /* Season-specific secondary */
---seasonal-accent     /* Season-specific accent */
+--primary         /* specific primary */
+--secondary       /* specific secondary */
+--accent          /* specific accent */
 ```
 
 ## Performance Benefits
