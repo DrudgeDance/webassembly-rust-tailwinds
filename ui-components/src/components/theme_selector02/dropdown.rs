@@ -1,5 +1,5 @@
 use leptos::*;
-use crate::theme::{BaseTheme, Theme};
+use crate::theme::{BaseTheme, Theme, Mode};
 
 #[component]
 pub fn ThemeSelectorDropdown(
@@ -33,10 +33,9 @@ pub fn ThemeSelectorDropdown(
 
     view! {
         <div
-            class="absolute w-48 p-2 rounded-lg shadow-lg space-y-2 transition-all duration-200"
+            class="absolute w-48 p-2 rounded-xl shadow-lg space-y-2 transition-all duration-200 bg-surface"
             class=move || {
-                let (bg, _, _) = super::get_theme_colors(None, theme);
-                format!("{} {}", bg, if is_open.get() { "block" } else { "hidden" })
+                format!("{}", if is_open.get() { "block" } else { "hidden" })
             }
             style="min-width: 200px; position: absolute; right: 0; top: 100%; transform-origin: top right; z-index: 50;"
         >
