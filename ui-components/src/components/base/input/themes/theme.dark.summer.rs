@@ -11,10 +11,16 @@ pub fn get_theme() -> InputTheme {
             text: "#FEEBC8".to_string(),
             placeholder: "#ED8936".to_string(),
             border: "#9C4221".to_string(),
+            initial_focus_ring: "#ED8936".to_string(),
             focus_ring: "#ED8936".to_string(),
+            focus_border: "#ED8936".to_string(),
             hover_background: "#9C4221".to_string(),
+            hover_border: "#B7461A".to_string(),
             disabled_background: "#9C4221".to_string(),
             disabled_text: "#ED8936".to_string(),
+            disabled_border: "#7B341E".to_string(),
+            selection_background: "#ED8936".to_string(),
+            selection_text: "#7B341E".to_string(),
         },
     }
 } 
