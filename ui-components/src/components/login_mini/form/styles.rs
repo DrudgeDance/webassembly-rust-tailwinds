@@ -1,3 +1,3 @@
-pub const INPUT_BASE_STYLES: &str = "w-full h-[34px] px-3 py-1 rounded-lg transition-all duration-200";
-pub const INPUT_WITH_BUTTON_STYLES: &str = "w-full h-[34px] px-3 py-1 rounded-lg transition-all duration-200 pr-10";
-pub const BUTTON_STYLES: &str = "absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md hover:bg-black/5 transition-colors"; 
+pub const INPUT_BASE_STYLES: &str = "w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 bg-transparent border-2";
+pub const INPUT_WITH_BUTTON_STYLES: &str = "w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 pr-10 bg-transparent border-2";
+pub const BUTTON_STYLES: &str = "absolute inset-y-0 right-0 pr-3 flex items-center"; 

@@ -1,5 +1,8 @@
 use leptos::*;
-use crate::theme::BaseTheme;
+use crate::{
+    layouts::Standard,
+    theme::BaseTheme,
+};
 use super::LoginMiniForm;
 
 #[component]
@@ -11,11 +14,15 @@ pub fn LoginMini(
     };
 
     view! {
-        <div class="flex items-center justify-center min-h-screen">
-            <LoginMiniForm
-                on_submit=handle_submit
-                theme=theme
-            />
-        </div>
+        <Standard theme=theme header_title="Quick Login">
+            <div class="flex-grow flex flex-col items-center justify-start">
+                <div class="w-full">
+                    <LoginMiniForm
+                        on_submit=handle_submit
+                        theme=theme
+                    />
+                </div>
+            </div>
+        </Standard>
     }
 } 

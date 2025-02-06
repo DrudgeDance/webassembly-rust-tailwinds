@@ -19,8 +19,7 @@ pub fn LoginMiniForm(
     view! {
         <form 
             on:submit=handle_submit 
-            class="p-2 rounded-xl shadow-lg space-y-2 min-w-[200px] w-[250px]"
-            style="background-color: var(--surface-color);"
+            class="flex flex-col space-y-4 p-8"
         >
             <LoginMiniInput
                 value=login

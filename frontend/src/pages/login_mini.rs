@@ -9,8 +9,6 @@ pub fn LoginMiniPage(
     #[prop(into)] theme: Signal<BaseTheme>,
 ) -> impl IntoView {
     view! {
-        <div class="min-h-screen flex items-center justify-center">
-            <LoginMini theme=theme />
-        </div>
+        <LoginMini theme=theme />
     }
 } 

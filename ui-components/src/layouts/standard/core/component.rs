@@ -18,7 +18,7 @@ pub fn Standard(
     
     view! {
         <div 
-            class="min-h-screen flex flex-col transition-colors duration-200"
+            class="min-h-screen flex flex-col w-full transition-colors duration-200"
             style=move || {
                 let theme = theme_memo.get();
                 format!(
@@ -57,7 +57,7 @@ pub fn Standard(
 
             // Main content
             <main 
-                class="flex-grow flex flex-col items-center justify-start p-8 transition-colors duration-200"
+                class="flex-grow flex flex-col w-full transition-colors duration-200"
                 style=move || {
                     let theme = theme_memo.get();
                     format!(
