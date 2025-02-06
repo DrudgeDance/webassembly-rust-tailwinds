@@ -7,11 +7,17 @@ pub fn get_theme() -> ComponentTheme<HelloColors> {
         mode: Mode::Light,
         theme: Some(Theme::Summer),
         colors: HelloColors {
-            text: "#c53030".to_string(),
-            text_muted: "#f56565".to_string(),
-            background: "#fff5f5".to_string(),
-            border: "#fc8181".to_string(),
-            shadow: "rgba(245, 101, 101, 0.1)".to_string(),
+            background: "orange-50".to_string(),
+            surface: "white".to_string(),
+            text: "orange-900".to_string(),
+            text_muted: "orange-600".to_string(),
+            border: "orange-200".to_string(),
+            border_hover: "orange-300".to_string(),
+            shadow_color: "orange-200".to_string(),
+            hover_background: "orange-50".to_string(),
+            hover_border: "orange-300".to_string(),
+            selection_background: "orange-100".to_string(),
+            selection_text: "orange-900".to_string(),
         },
     }
 } 

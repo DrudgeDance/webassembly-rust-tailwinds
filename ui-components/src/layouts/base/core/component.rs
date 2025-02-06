@@ -12,26 +12,23 @@ pub fn Base(
 
     view! {
         <div 
-            class="min-h-screen transition-colors duration-200"
-            style=move || {
+            class=move || {
                 let theme = theme_memo.get();
                 format!(
-                    "background-color: {}; color: {}",
+                    "min-h-screen transition-colors duration-200 bg-{} text-{}",
                     theme.colors.background,
-                    theme.colors.text,
+                    theme.colors.text
                 )
             }
         >
             <Navbar theme=theme/>
             <main 
-                class="flex-grow flex flex-col items-center justify-center space-y-8 p-8 transition-colors duration-200"
-                style=move || {
+                class=move || {
                     let theme = theme_memo.get();
                     format!(
-                        "background-color: {}; border-top: 1px solid {}; box-shadow: 0 -4px 6px {}",
-                        theme.colors.surface,
-                        theme.colors.border,
-                        theme.colors.shadow,
+                        "flex-grow flex flex-col items-center justify-center space-y-8 p-8 \
+                         transition-colors duration-200 bg-{}",
+                        theme.colors.background
                     )
                 }
             >

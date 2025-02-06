@@ -16,24 +16,36 @@ pub fn Hello(
         message.map(|m| m.get()).unwrap_or_else(|| DEFAULT_MESSAGE.to_string())
     });
 
+    let base_classes = "p-6 rounded-lg \
+                       transition-colors duration-200 \
+                       shadow-lg border";
+
+    let theme_classes = move || {
+        let colors = &theme_memo.get().colors;
+        format!(
+            "bg-{} text-{} border-{} shadow-{}/50 \
+             hover:bg-{} hover:border-{} \
+             selection:bg-{} selection:text-{}",
+            colors.surface,
+            colors.text,
+            colors.border,
+            colors.shadow_color,
+            colors.hover_background,
+            colors.hover_border,
+            colors.selection_background,
+            colors.selection_text
+        )
+    };
+
     view! {
         <Base theme=theme>
             <div class="flex items-center justify-center">
-                <div
-                    class="p-6 rounded-lg"
-                    style=move || format!(
-                        "background-color: {}; color: {}; border: 1px solid {}; box-shadow: 0 4px 6px {}",
-                        theme_memo.get().colors.background,
-                        theme_memo.get().colors.text,
-                        theme_memo.get().colors.border,
-                        theme_memo.get().colors.shadow,
-                    )
-                >
-                    <h1 class="text-2xl font-bold">{display_message}</h1>
-                    <p
-                        class="mt-2"
-                        style=move || format!("color: {}", theme_memo.get().colors.text_muted)
-                    >
+                <div class={move || format!("{} {}", base_classes, theme_classes())}>
+                    <h1 class="text-2xl font-bold selection:text-inherit selection:bg-inherit">
+                        {display_message}
+                    </h1>
+                    <p class=move || format!("mt-2 text-{} selection:text-inherit selection:bg-inherit", 
+                        theme_memo.get().colors.text_muted)>
                         "Welcome to our themed application!"
                     </p>
                 </div>
