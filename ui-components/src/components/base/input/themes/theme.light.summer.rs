@@ -7,20 +7,20 @@ pub fn get_theme() -> InputTheme {
         mode: Mode::Light,
         theme: Some(Theme::Summer),
         colors: InputColors {
-            background: "#fff5eb".to_string(),    // Warm white
-            text: "#93370d".to_string(),          // Deep terracotta
-            placeholder: "#f97316".to_string(),    // Bright orange
-            border: "#fdba74".to_string(),        // Soft peach
-            initial_focus_ring: "#f97316".to_string(), // Bright orange
-            focus_ring: "#f97316".to_string(),    // Bright orange
-            focus_border: "#f97316".to_string(),  // Bright orange
-            hover_background: "#ffedd5".to_string(), // Light peach
-            hover_border: "#fb923c".to_string(),   // Muted orange
-            disabled_background: "#fff5eb".to_string(), // Warm white
-            disabled_text: "#fb923c".to_string(),  // Muted orange
-            disabled_border: "#fed7aa".to_string(),
-            selection_background: "#fed7aa".to_string(),
-            selection_text: "#7c2d12".to_string(),
+            background: "orange-50".to_string(),
+            text: "orange-900".to_string(),
+            placeholder: "orange-500".to_string(),
+            border: "orange-500/50".to_string(),
+            initial_focus_ring: "orange-500/50".to_string(),
+            focus_ring: "orange-500/50".to_string(),
+            focus_border: "orange-500".to_string(),
+            hover_background: "orange-100".to_string(),
+            hover_border: "orange-400".to_string(),
+            disabled_background: "orange-50".to_string(),
+            disabled_text: "orange-300".to_string(),
+            disabled_border: "orange-200".to_string(),
+            selection_background: "orange-200".to_string(),
+            selection_text: "orange-900".to_string(),
         },
     }
 } 

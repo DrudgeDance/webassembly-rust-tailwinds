@@ -19,22 +19,22 @@ pub struct InputColors {
 }
 
 impl ComponentColors for InputColors {
-    fn from_theme(base_theme: &BaseTheme) -> Self {
+    fn from_theme(_base_theme: &BaseTheme) -> Self {
         Self {
-            background: base_theme.colors.background.clone(),
-            text: base_theme.colors.text.clone(),
-            placeholder: base_theme.colors.text_muted.clone(),
-            border: base_theme.colors.primary.clone(),
-            initial_focus_ring: base_theme.colors.primary.clone(),
-            focus_ring: base_theme.colors.primary.clone(),
-            focus_border: base_theme.colors.primary.clone(),
-            hover_background: base_theme.colors.surface.clone(),
-            hover_border: base_theme.colors.primary.clone(),
-            disabled_background: base_theme.colors.surface.clone(),
-            disabled_text: base_theme.colors.text_muted.clone(),
-            disabled_border: base_theme.colors.surface.clone(),
-            selection_background: base_theme.colors.primary.clone(),
-            selection_text: base_theme.colors.text.clone(),
+            background: "white".to_string(),
+            text: "gray-900".to_string(),
+            placeholder: "gray-500".to_string(),
+            border: "blue-500/50".to_string(),
+            initial_focus_ring: "blue-500/50".to_string(),
+            focus_ring: "blue-500/50".to_string(),
+            focus_border: "blue-500".to_string(),
+            hover_background: "gray-50".to_string(),
+            hover_border: "blue-400".to_string(),
+            disabled_background: "gray-50".to_string(),
+            disabled_text: "gray-300".to_string(),
+            disabled_border: "gray-200".to_string(),
+            selection_background: "blue-100".to_string(),
+            selection_text: "blue-900".to_string(),
         }
     }
 }
