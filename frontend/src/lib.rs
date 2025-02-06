@@ -6,7 +6,7 @@ pub mod pages;
 use leptos::*;
 use leptos_router::*;
 use crate::features::hello::HelloFeature;
-use crate::pages::LoginPage;
+use crate::pages::{LoginPage, LoginMiniPage};
 use crate::providers::theme::ThemeProvider;
 use ui_components::theme::{BaseTheme, Mode, ThemeColors};
 
@@ -42,6 +42,10 @@ pub fn App() -> impl IntoView {
                     <Route
                         path="/login"
                         view=move || view! { <LoginPage theme=theme /> }
+                    />
+                    <Route
+                        path="/login-mini"
+                        view=move || view! { <LoginMiniPage theme=theme /> }
                     />
                 </Routes>
             </Router>

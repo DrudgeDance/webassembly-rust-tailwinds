@@ -1,7 +1,7 @@
 pub mod components;
 pub mod layouts;
-pub mod theme;
 pub mod styles;
+pub mod theme;
 
 pub use components::*;
 pub use layouts::Base;
