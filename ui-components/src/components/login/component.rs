@@ -17,11 +17,8 @@ pub fn Login(
 
     view! {
         <Standard theme=theme header_title="Login">
-            <div class="w-full max-w-md mx-auto mt-10">
-                <div 
-                    class="shadow-md rounded-lg px-8 py-6 mb-4"
-                    style="background-color: var(--surface-color); border: 1px solid var(--border-color);"
-                >
+            <div class="w-full flex-grow flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+                <div class="w-full max-w-sm sm:max-w-md">
                     <LoginForm 
                         on_submit=handle_submit 
                         theme=theme

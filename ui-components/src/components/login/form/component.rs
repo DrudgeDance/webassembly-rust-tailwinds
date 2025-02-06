@@ -29,8 +29,8 @@ pub fn LoginForm(
     view! {
         <form 
             on:submit=handle_submit 
-            class="p-4 rounded-xl shadow-lg space-y-4 min-w-[300px] w-[400px]"
-            style="background-color: var(--surface-color);"
+            class="p-6 sm:p-8 rounded-lg shadow-md space-y-4"
+            style="background-color: var(--surface-color); border: 1px solid var(--border-color);"
         >
             <LoginInput
                 value=email
@@ -46,7 +46,7 @@ pub fn LoginForm(
                 theme=theme
             />
 
-            <div class="flex items-center justify-between">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
                 <div class="flex items-center">
                     <input
                         type="checkbox"
@@ -73,11 +73,11 @@ pub fn LoginForm(
             <ErrorMessage error=error />
             <SubmitButton loading=loading />
 
-            <div class="mt-6 text-center">
-                <span class="text-sm">"Don't have an account? "</span>
+            <div class="mt-6 text-center text-sm">
+                <span>"Don't have an account? "</span>
                 <a 
                     href="#" 
-                    class="text-sm hover:underline"
+                    class="hover:underline"
                     style="color: var(--primary-color);"
                 >
                     "Sign up"
