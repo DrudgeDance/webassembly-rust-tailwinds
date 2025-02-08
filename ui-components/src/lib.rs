@@ -4,7 +4,7 @@ pub mod styles;
 pub mod theme;
 
 pub use components::*;
-pub use layouts::Base;
+pub use layouts::Standard;
 pub use theme::*;
 
 pub fn add(left: u64, right: u64) -> u64 {

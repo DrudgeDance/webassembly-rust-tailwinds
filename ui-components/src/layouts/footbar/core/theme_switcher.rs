@@ -1,8 +1,8 @@
 use leptos::*;
 use crate::theme::{BaseTheme, Mode, Theme};
-use super::themes::{self, LayoutTheme};
+use super::themes::{self, FootbarTheme};
 
-pub fn create_theme_memo(theme: Signal<BaseTheme>) -> Memo<LayoutTheme> {
+pub fn create_theme_memo(theme: Signal<BaseTheme>) -> Memo<FootbarTheme> {
     create_memo(move |_| {
         match (theme.get().mode, theme.get().theme) {
             (Mode::Light, None) => themes::get_light_default(),

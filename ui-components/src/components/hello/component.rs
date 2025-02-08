@@ -1,7 +1,7 @@
 use leptos::*;
 use crate::theme::BaseTheme;
 use super::theme_switcher::create_theme_memo;
-use crate::layouts::Base;
+use crate::layouts::Standard;
 
 const DEFAULT_MESSAGE: &str = "Hello, World!";
 
@@ -38,8 +38,8 @@ pub fn Hello(
     };
 
     view! {
-        <Base theme=theme>
-            <div class="flex items-center justify-center">
+        <Standard theme=theme header_title="Hello">
+            <div class="flex-grow flex flex-col items-center justify-start pt-8">
                 <div class={move || format!("{} {}", base_classes, theme_classes())}>
                     <h1 class="text-2xl font-bold selection:text-inherit selection:bg-inherit">
                         {display_message}
@@ -50,6 +50,6 @@ pub fn Hello(
                     </p>
                 </div>
             </div>
-        </Base>
+        </Standard>
     }
 } 

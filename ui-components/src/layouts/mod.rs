@@ -6,9 +6,9 @@
 
 pub mod navbar;
 pub mod main_content;
-pub mod base;
+pub mod footbar;
 pub mod standard;
 
 // Re-export only what's being used
-pub use base::Base;
+pub use footbar::Footbar;
 pub use standard::Standard; 

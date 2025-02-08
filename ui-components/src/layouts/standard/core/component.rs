@@ -1,6 +1,7 @@
 use leptos::*;
 use crate::theme::BaseTheme;
 use crate::components::theme_selector02::ThemeSelector02;
+use crate::layouts::footbar::Footbar;
 use super::theme_switcher::create_theme_memo;
 
 #[component]
@@ -37,7 +38,7 @@ pub fn Standard(
                         format!(
                             "background-color: {}; border-bottom: 1px solid {}",
                             theme.colors.surface,
-                            theme.colors.border,
+                            theme.colors.primary,
                         )
                     }
                 >
@@ -69,21 +70,7 @@ pub fn Standard(
                 {children()}
             </main>
 
-            // Footer
-            <footer 
-                class="w-full p-4 text-center transition-colors duration-200"
-                style=move || {
-                    let theme = theme_memo.get();
-                    format!(
-                        "background-color: {}; color: {}; border-top: 1px solid {}",
-                        theme.colors.surface,
-                        theme.colors.text_muted,
-                        theme.colors.border,
-                    )
-                }
-            >
-                <p>"© 2024 My App. All rights reserved."</p>
-            </footer>
+            <Footbar theme=theme />
         </div>
     }
 } 
