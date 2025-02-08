@@ -1,6 +1,6 @@
 use leptos::*;
 use crate::theme::BaseTheme;
-use crate::components::theme_selector02::ThemeSelector02;
+use crate::components::compound::theme_selector02::ThemeSelector02;
 use super::theme_switcher::create_theme_memo;
 
 #[component]
