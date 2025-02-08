@@ -13,22 +13,32 @@ pub struct HelloColors {
     pub hover_border: String,
     pub selection_background: String,
     pub selection_text: String,
+    pub focus_border: String,
+    pub focus_ring: String,
+    pub active_background: String,
+    pub active_border: String,
+    pub heading_text: String,
 }
 
 impl ComponentColors for HelloColors {
-    fn from_theme(_base_theme: &BaseTheme) -> Self {
+    fn from_theme(base_theme: &BaseTheme) -> Self {
         Self {
-            background: "white".to_string(),
-            surface: "gray-50".to_string(),
-            text: "gray-900".to_string(),
-            text_muted: "gray-600".to_string(),
-            border: "gray-200".to_string(),
-            border_hover: "gray-300".to_string(),
-            shadow_color: "gray-200".to_string(),
-            hover_background: "gray-50".to_string(),
-            hover_border: "gray-300".to_string(),
-            selection_background: "gray-100".to_string(),
-            selection_text: "gray-900".to_string(),
+            background: base_theme.colors.background.clone(),
+            surface: base_theme.colors.surface.clone(),
+            text: base_theme.colors.text.clone(),
+            text_muted: base_theme.colors.text_muted.clone(),
+            border: base_theme.colors.primary.clone(),
+            border_hover: base_theme.colors.primary.clone(),
+            shadow_color: base_theme.colors.surface.clone(),
+            hover_background: base_theme.colors.surface.clone(),
+            hover_border: base_theme.colors.primary.clone(),
+            selection_background: base_theme.colors.surface.clone(),
+            selection_text: base_theme.colors.text.clone(),
+            focus_border: base_theme.colors.primary.clone(),
+            focus_ring: base_theme.colors.primary.clone(),
+            active_background: base_theme.colors.surface.clone(),
+            active_border: base_theme.colors.primary.clone(),
+            heading_text: base_theme.colors.text.clone(),
         }
     }
 }
