@@ -23,12 +23,12 @@ pub fn Hello(
         let colors = &theme_memo.get().colors;
         format!(
             "bg-{} text-{} border-{} \
-            shadow-{}/50 \
-            hover:bg-{} hover:border-{} \
-            focus:border-{} focus:ring-2 focus:ring-{} \
-            active:bg-{} active:border-{} \
-            selection:bg-{} selection:text-{}",
-            colors.background,
+             shadow-{}/50 \
+             hover:bg-{} hover:border-{} \
+             focus:border-{} focus:ring-2 focus:ring-{} \
+             active:bg-{} active:border-{} \
+             selection:bg-{} selection:text-{}",
+            colors.surface,
             colors.text,
             colors.border,
             colors.shadow_color,
